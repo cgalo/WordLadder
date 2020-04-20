@@ -77,3 +77,18 @@ int WordLadder::getHammingDistance(std::string str1, std::string str2)
     }   //End of else, if both strings have the same length
 }   //End of getHammingDistance method
 
+int WordLadder::findInVector(std::vector<std::string> vec, std::string word)
+{
+    /* findInVector private method, parameter(s): vector (string) <vec>, string <word>
+     * Objective: Search string in vector, return index location of the string in the vector
+     * Notes:
+     *  - If string is not found then return -1
+     * */
+
+    for (int index = 0; index < vec.size(); index++)
+    {
+        if (vec[index] == word)
+            return index;
+    }   //End of for-loop
+    return -1;
+}   //End of findInVector method

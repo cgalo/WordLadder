@@ -19,22 +19,27 @@ int main(int argc, char** argv) {
     //3 = last word in the ladder
     //WordLadder file.txt clash clown
 
-    if (argc <= 3)                  //We need at least 3 arguments in the CLI
+    if (argc <= 3)                          //We need at least 3 arguments in the CLI
         cout << "Error! Missing more arguments with command" << endl;
-    else                            //Else the user provided 3 arguments
+    else                                    //Else the user provided 3 arguments
     {
-        string firstWord    = argv[2];  //Save the 'first word' value from the cmd
-        string lastWord     = argv[3];  //Save the 'last word' value from the cmd
+        string firstWord    = argv[2];      //Save the 'first word' value from the cmd
+        string lastWord     = argv[3];      //Save the 'last word' value from the cmd
         if (firstWord.length() == lastWord.length()) //If the first word and last word in the ladder are the same length
         {
-            toUpper(&firstWord);         //Convert the firstWord string to upper case
-            toUpper(&lastWord);          //Convert the lastWord string to upper case
+            toUpper(&firstWord);            //Convert the firstWord string to upper case
+            toUpper(&lastWord);             //Convert the lastWord string to upper case
 
             cout << "First Word: " << firstWord << endl;
             cout << "Last Word: "  << lastWord << endl;
             std:: cout << "File name: " << argv[1] << endl;
             WordLadder* wl = new WordLadder(argv[1], firstWord.length());
-            std::cout << "Size: " << wl->getWordCount() << std::endl;
+            if (wl->getWordCount() == 0)    //If no words were found, in the file, with the given length, output error
+                std::cout << "Error! No words were found with the length of your words: " << firstWord << ", " <<  lastWord << std::endl;
+            else                            //Else we found words with the desired length in the file
+            {
+
+            }   //End of else
             delete wl;
 
         }   //End of if the firstWord and lastWord have the same length
