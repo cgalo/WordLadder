@@ -45,9 +45,21 @@ WordLadder::~WordLadder()
 
 std::vector<std::string> WordLadder::getMinLadder(std::string start, std::string end)
 {
-    std::vector<std::string> vector;
-    vector.push_back("a");
-    return vector;
+    // Returns a minimum-length word ladder from start to end. If multiple minimum-length
+    // word ladders exist, no guarantee is made regarding which one is returned. If no word
+    // ladder exists, this method returns an empty list.
+    //
+    // Breadth-first search must be used to implement this method.
+    //
+    // start    the starting word
+    // end      the ending word
+    // returns  a minimum length word ladder from start to end
+    //
+
+    std::vector<std::string> ladder;    //Initiate an empty ladder of seen
+
+
+
 }   //End of getMinLadder method
 
 void WordLadder::displayResult(std::vector<std::string> sequence)
@@ -92,3 +104,15 @@ int WordLadder::findInVector(std::vector<std::string> vec, std::string word)
     }   //End of for-loop
     return -1;
 }   //End of findInVector method
+
+std::set<std::string> WordLadder::getNeighbors(std::string word)
+{
+    std::set<std::string> neighbors;                    //Initiate an empty set of strings called neighbors
+    for (const auto& elem: lexicon)                     //Loop through each element in our dictionary, lexicon
+    {
+        int hamDist = getHammingDistance(elem, word);   //Get the hamming distance between the two words
+        if (hamDist == 1)                               //If the distance is 1
+            neighbors.insert(elem);                     //Then we insert it to our neighbor set
+    }   //End of for-loop
+    return neighbors;                                   //Return the final list of neighbors
+}   //End of getNeighbors method
