@@ -63,7 +63,7 @@ std::vector<std::string> WordLadder::getMinLadder(std::string start, std::string
     std::vector <std::string> predecessor;                  //Keep track of the predecessors
     std::list   <std::string> queue;                        //Initiate a queue, type list
 
-    if (!isWord(end))                                       //If the 'end' word is not in the lexicon
+    if (!isWord(start) || !isWord(end))                     //If either the 'start' or 'end' word are not in the lexicon
         return ladder;                                      //Return empty ladder
 
     //Start by inserting the 'start' string into the queue and wordSeen, and empty string as predecessor
@@ -219,15 +219,21 @@ bool WordLadder::isWord(std::string str)
 
 bool WordLadder::isWordLadder(std::vector<std::string> sequence)
 {
+    /* isWordLadder private method, parameter(s): vector<string>
+     * Objective: Checks to see if the given sequence of strings is a valid word ladder.
+     * Notes:
+     *  - Returns true if the given sequence is a valid word ladder, false otherwise
+     * */
 
-    for (int i = 0; i < sequence.size(); i++)
+
+    for (int i = 0; i < sequence.size(); i++)                   //Start looping through each element in the vector
     {
-        if (i == sequence.size()-1)   //If we reached the last element
-            break;                  //Then we leave the loop as there is nothing to compare anymore
-        else                        //Else are not in the last element of the vector sequence
+        if (i == sequence.size()-1)                             //If we reached the last element
+            break;                                              //Then we leave the loop as there is nothing to compare anymore
+        else                                                    //Else are not in the last element of the vector sequence
         {
-            std::string word = sequence[i];         //Save the current element of the sequence as variable word
-            std::string nextWord = sequence[i+1];   //Save the next word in sequence as variable nextWord
+            std::string word = sequence[i];                     //Save the current element of the sequence as variable word
+            std::string nextWord = sequence[i+1];               //Save the next word in sequence as variable nextWord
             std::set <std::string> neighbors = getNeighbors(word);  //Get all neighbors for our current word
 
             //Check if the neighbors set contains the 'nextWord' in it
