@@ -1,6 +1,11 @@
-//
-// Created by Carlos Galo on 4/18/20.
-//
+/*
+ * Author: Carlos Galo
+ * Created On: 4/18/2020
+ * Program: WordLadder
+ * Class: Non-Linear Data Structures
+ * File: WordLadder.h
+ *  - This is the header file for the WordLadder class
+ * */
 
 #ifndef WORDLADDER_WORDLADDER_H
 #define WORDLADDER_WORDLADDER_H
@@ -10,6 +15,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <list>
 #include <string>
 #include <set>
 
@@ -127,8 +133,6 @@ private:
     //
     int getHammingDistance(std::string str1, std::string str2);
 
-};
-
-
+};  //End of WordLadder class
 
 #endif //WORDLADDER_WORDLADDER_H

@@ -3,6 +3,8 @@
  * Created On: 4/18/2020
  * Program: WordLadder
  * Class: Non-Linear Data Structures
+ * File: main.cpp
+ *  - CLI menu
  * */
 
 #include <iostream>
@@ -29,30 +31,25 @@ int main(int argc, char** argv) {
         {
             toUpper(&firstWord);            //Convert the firstWord string to upper case
             toUpper(&lastWord);             //Convert the lastWord string to upper case
-
-            cout << "First Word: " << firstWord << endl;
-            cout << "Last Word: "  << lastWord << endl;
-            std:: cout << "File name: " << argv[1] << endl;
             WordLadder* wl = new WordLadder(argv[1], firstWord.length());
             if (wl->getWordCount() == 0)    //If no words were found, in the file, with the given length, output error
-                std::cout << "Error! No words were found with the length of your words: " << firstWord << ", " <<  lastWord << std::endl;
+                cout << "Error! No words were found with the length of: " << firstWord << ", " <<  lastWord << endl;
             else                            //Else we found words with the desired length in the file
-            {
-
-            }   //End of else
-            delete wl;
-
+                wl->displayResult(wl->getMinLadder(firstWord,lastWord));
+            delete wl;                      //Perform garbage collection on the WordLadder object
         }   //End of if the firstWord and lastWord have the same length
         else                                    //Else first & last word sizes do not match
             cout << "Error! Your first & last word values are not the same length" << std::endl;  //Output error message
     }   //End of else, if the user passed at least 3 arguments w/ the cmd
-
     return 0;
 }   //End of main function
 
 
 void toUpper (std::string* word)
 {
-    //Function takes pointer/reference of a string and converts it into uppercase
+    /* toUpper function, parameter(s): string <word>
+     * Objective: Convert given string <word> into upper case
+     * */
+
     for (auto & c: *word) c = toupper(c);
 }   //End of toUpper function
