@@ -1,5 +1,5 @@
 /*
- * Author: Carlos Galo
+ * Author: Larry Thomas
  * Created On: 4/18/2020
  * Program: WordLadder
  * Class: Non-Linear Data Structures
