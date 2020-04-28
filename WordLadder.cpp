@@ -27,7 +27,9 @@ WordLadder::WordLadder(std::string lexiconFileName, int len)
         std::string str;                    //Initiate a string variable to use while reading the file
         while (std::getline(inFile, str))
         {
-            str.pop_back();                 //Remove the end of line delimiter at the end of the string
+            char c = str.back();            //Save the last char in the string
+            if (c == '\n' || c == '\0')     //Check if the char is a special/exit character
+                str.pop_back();             //Remove the end of line delimiter at the end of the string
             if (str.length() == len)        //If the string's length is the length we are looking for
                 this->lexicon.insert(str);  //Then insert the string into our dictionary <lexicon>
         }   //End of while-loop, finished traversing each line in the file
